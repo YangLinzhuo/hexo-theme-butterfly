@@ -22,11 +22,33 @@ if theme.aside.card_webinfo.enable
           .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
           .item-count#busuanzi_value_site_uv
             i.fa-solid.fa-spinner.fa-spin
+        script.
+          function checkUv(){ 
+              var init_uv = parseInt(!{theme.busuanzi.init_uv})
+              var uv = document.getElementById("busuanzi_value_site_uv")
+              if (uv.innerText === ''){
+              setTimeout(checkUv, 100)
+              }else{
+                  uv.innerText = parseInt(uv.innerText) + init_uv
+              }
+          }
+        script checkUv()
       if theme.busuanzi.site_pv
         .webinfo-item
           .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
           .item-count#busuanzi_value_site_pv
             i.fa-solid.fa-spinner.fa-spin
+        script.
+          function checkPv(){ 
+              var init_pv = parseInt(!{theme.busuanzi.init_pv})
+              var pv = document.getElementById("busuanzi_value_site_pv")
+              if (pv.innerText === ''){
+              setTimeout(checkPv, 100)
+              } else {
+                  pv.innerText = parseInt(pv.innerText) + init_pv
+              }
+          }
+        script checkPv()
       if theme.aside.card_webinfo.last_push_date
         .webinfo-item
           .item-name= _p('aside.card_webinfo.last_push_date.name') + " :"
